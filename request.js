@@ -5,6 +5,7 @@ const songTitle =  'lucky';
 const artistName = 'jason%20mraz';
 const queryString = 'op_title=contains&' + `title=${songTitle}&` + 
 'op_performer=contains&' +  `performer=${artistName}`; 
+
 // op_title and op_performer are types of relations that defines the search
 // op_title has 3 values: contains, starts with, equals;
 // op_performer has 4 values: contains, equals, is set, is not set; 
@@ -17,9 +18,10 @@ const submit = document.querySelector('#submit');
 // AJAX function
 const getSuggestions = async () => {
   const endpoint = url + queryString;
+  console.log("Query Endpoint:", endpoint); 
   const option = {
     method: 'GET',
-    mode: 'no-cors',
+    // mode: 'no-cors',   // try comment this out! 
     headers: {
       'Accept': 'application/json'
     }
