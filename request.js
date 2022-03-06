@@ -35,6 +35,8 @@ const getSuggestions = async () => {
     if(response.ok){
       let jsonResponse = await response.json();
       console.log(jsonResponse);
+      // try write into csv
+      
     }
   }
   catch(error){
