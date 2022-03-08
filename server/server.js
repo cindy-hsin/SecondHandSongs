@@ -1,31 +1,102 @@
-// Returns the createApplication function in express.js
-const express = require('express'); // NOTE: "express" here is NOT a relative direcoty! It's a module name!
-									// REF: How does Node.js and require() look for modules? 
-									// https://www.bennadel.com/blog/2169-where-does-node-js-and-require-look-for-modules.htm
 
+const express = require('express');
 const app = express();				// Instantiate an Express application.
-// const api_helper = require('./api_helper');
 const axios = require('axios');
+
+
+
+/**
+ * songsWithArtistName.csv
+ * 
+ * Read from "songsWithArtistName.csv".
+ * For each song record:
+ *   extract its SongName and ArtistName;
+ *   use SongName as songTitle, ArtistName as artistName, to update queryString and endpoint;
+ *   call buildCoverInfo() with the song's endpoint.
+ */
+
+/** Potential Issues:
+ * 1. Query result: Since we set serach option as "contains" instead of "equal", 
+ *    there might be multiple track object in queryResponseData.resultPage. 
+ *    Currently we only take (queryResponseData.resultPage)[0] as the target track and then search for cover infos.
+ *    But [0] might not be the correct target track.
+ * 2. 
+ * 
+ */
+
+
+/** A global list of cover record objects, which will eventually be written into csv file.*/
+let coverRecords = [];
+
+/**  
+ * Returns a "Cover" objects: 
+ * {coverName: "", performerName: "", songId: "", spotifyTrackUrl: "", youtubeUrl: ""};
+ * Input: 
+*/
+function buildCoverRecord() {
+  let cover = {};
+
+
+  return cover;
+}
+
+
+function appendIntoCoverRecords(cover) {
+
+}
+
+
+
+// CoverId VARCHAR(255) auto_incremented,
+// CoverName 
+// PerformerName
+// SongId
+// SpotifyTrackUrl (link to Spotify UI/webpage to play the track)
+// YoutubeUrl 
 
 
 // Information to reach API
 const url = 'https://secondhandsongs.com/search/performance?';
 // Look for the song 'Lucky', sung by 'Jason Mraz'
-const songTitle =  'lucky';
-const artistName = 'jason%20mraz';
+const songTitle =  'dfgfyujn';//'lucky';
+const artistName = 'ijvdssry';//'jason%20mraz';
 const queryString = 'op_title=contains&' + `title=${songTitle}&` + 
 'op_performer=contains&' +  `performer=${artistName}`; 
-const endpoint = url + queryString;
+const searchTrackEndpoint = url + queryString;
 
+startProcess(searchTrackEndpoint);
+
+async function startProcess(searchTrackEndpoint) {
+  const trackObj = await requestTrackUriFromQueryEndpoint(searchTrackEndpoint);
+  const {trackUri, trackTitle} = trackObj;
+  if (trackUri === null) {
+    console.log("End Program! No track found with the query endpoint: ", searchTrackEndpoint)
+    return;
+  }
+
+  const coverUriList = await requestCoverUriListFromTrackUrl(trackUri);
+  if (coverUriList.length === 0) {
+    console.log("End Program! No cover found for the given track: \n"
+    + ` Title: ${trackTitle};  TrackUri: ${trackUri} `);
+    return;
+  }
+
+  for (let cover of coverUriList) {
+    await buildSingleCoverRecord(coverUri);
+  }
+
+
+}
 
 
 // Functions to call API
 async function requestDataWriteToCsv() {
+  
   const coverUriSequence = await getCoverUriSequence();
   console.log(typeof(coverUriSequence));
 
   for (let coverUri of coverUriSequence) {
-    const youtubeUri = await getSingleCoverYoutubeUri(coverUri);
+    const youtubeUri = await buildSingleCoverRecord(coverUri);
     console.log("**** Youtube Uri:", youtubeUri);
     // TODO: write each youtubeUri into CSV. (CSV table/Database Table to be designed(i.e. What columns does the DB table contain? 
 
@@ -33,59 +104,112 @@ async function requestDataWriteToCsv() {
 }
 
 
-async function getCoverUriSequence() {
-  let trackUri;
+
+/**
+/** Return the trackUri and trackTitle from queryString.
+ * 
+ * 
+ * Return: The SecondHandSong {url, title} of the top listed track in the query result;
+ *         Or {null, null}, when there's no result for the query.
+*/
+async function requestTrackUriFromQueryEndpoint(searchTrackEndpoint) {
+  let trackUri = null;      // TODO: Is null an appropriate default value?
+  let trackTitle = null;
+  
   try {
-    const queryResponse = await axios.get(endpoint, {headers: {'Accept': 'application/json'}});
+    const queryResponse = await axios.get(searchTrackEndpoint, {headers: {'Accept': 'application/json'}});
     const queryResponseData = queryResponse.data;
     console.log("**** Query response Data:", queryResponseData);
+    // TODO: queryResponseData may not have results. (queryResponseData.resultPage may be empty)
+    // e.g. **** Query response Data: { totalResults: 0, resultPage: [], skippedResults: 0 }
    
-    trackUri = (queryResponseData.resultPage)[0].uri;
-    console.log("**** Track uri", trackUri);
-  
+    if (queryResponseData.resultPage.length > 0) {
+      trackUri = (queryResponseData.resultPage)[0].uri;
+      trackTitle = (queryResponseData.resultPage)[0].title;
+    }
   } catch(err) {
     console.log(err);
   }
+  
+  console.log("**** Track uri", trackUri);
+  console.log("**** Track title", trackTitle);
+  return {trackUri, trackTitle};
+}
 
-  let coverUriSequence;
+/** Return a list of the target track's cover uri's.  
+ * 
+ * Input: A non-null trackUri
+ * Return: a non-empty list of target track's cover uri's;
+ *         OR, an empty list when there's no cover for this track.
+*/
+async function requestCoverUriListFromTrackUrl(trackUri) {
+  let coverUriList = [];
+
   try {
     const trackResponse = await axios.get(trackUri, {headers: {'Accept': 'application/json'}});
     const trackResponseData = trackResponse.data;
     // console.log("**** Track response Data:", trackResponseData);
     
-    coverUriSequence = trackResponseData.covers.map(coverObj => coverObj.uri);
-    
-    console.log("**** Cover Uri List:", coverUriSequence);
+    if (trackResponseData.covers.length > 0) {
+      coverUriList = trackResponseData.covers.map(coverObj => coverObj.uri);
+    }
   } catch(err) {
     console.log(err);
   }
-  
-  
-  return coverUriSequence;
+
+  console.log("**** Cover Uri List:", coverUriList);
+  return coverUriList;
 }
 
+// {coverName: "", performerName: "", songId: "", spotifyTrackUrl: "", youtubeUrl: ""};
+// Rename: buildSingleCoverRecord
+async function buildSingleCoverRecord(coverUri) {
+  let cover = {
+    coverName:"",
+    performerName: "", 
+    songId: "", 
+    spotifyTrackUrl: "", 
+    youtubeUrl: ""
+  };
 
-async function getSingleCoverYoutubeUri(coverUri) {
+  let coverResponse = null; // TODO: Is null an appropriate default value??
+
   let youtubeUri;
   try {
-    const coverResponse = await axios.get(coverUri, {headers: {'Accept': 'application/json'}});
-    const coverResponseData = coverResponse.data;
-    // console.log("**** Cover response Data:", coverResponseData);
+    coverResponse = await axios.get(coverUri, {headers: {'Accept': 'application/json'}});
+  } catch(err) {
+    console.log(err);
+  }
+  console.log("**** Cover response:", coverResponse)
+  const coverResponseData = coverResponse.data;
+  console.log("**** Cover response Data:", coverResponseData);
+  // console.log("**** Check if releases is an array", Array.isArray(coverResponseData.releases)); // true
+  // console.log("**** Check if external_uri is an array", Array.isArray(coverResponseData.external_uri));  // true
+  
+
+
+
+
+    // TODO: Check if taking [0] element is accurate!!!
+    if (coverResponseData.releases.length > 0) {
+      const coverReleaseUrl = coverResponseData.releases[0].uri;
+      // Make another API call to coverReleaseUrl to scrap the SpotifyTrackUrl off of HTML data. 
+    }
+
     
     youtubeUri = (coverResponseData.external_uri).map(obj=>obj.uri);
     // console.log("**** Youtube Uri:", youtubeUri);
     // console.log(youtubeUri[0] !== undefined);
+    // console.log("**** Check if youtubeUri is an array", Array.isArray(youtubeUri)); // true
 
-  } catch(err) {
-    console.log(err);
-  }
-  if (youtubeUri[0] !== undefined) {return youtubeUri[0];}
+
+  if (youtubeUri.length > 0) {return youtubeUri[0];}
   return null;
 }
 
 
 
-requestDataWriteToCsv();
+
 
 
 // coverUriList.forEach((coverUri) => getSingleCoverExternalUri(coverUri));
