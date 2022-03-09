@@ -7,6 +7,24 @@ const {parse} = require('csv-parse');
 const {stringify} = require('csv-stringify');
 const {transform} = require('stream-transform');
 
+const { createLogger, format, transports } = require("winston");
+// Logger
+const logger = createLogger({
+  level: 'info',
+  format: format.combine(
+    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    format.metadata({fillExcept: ['timestamp','level', 'message']})
+  ),
+
+  transports: [new transports.File({
+    filename: "/Users/cindychen/Documents/NEU/Course_Material/cs5200/Project/second_hand_songs/testData/file.log",
+    format: format.combine(format.json(), format.prettyPrint()) 
+  })],
+  exceptionHandlers: [new transports.File({ filename: "/Users/cindychen/Documents/NEU/Course_Material/cs5200/Project/second_hand_songs/testData/exceptions.log" })],
+  rejectionHandlers: [new transports.File({ filename: "/Users/cindychen/Documents/NEU/Course_Material/cs5200/Project/second_hand_songs/testData/rejections.log" })],
+})
+
+
 /**
  * songsWithArtistName.csv
  * 
@@ -26,10 +44,6 @@ const {transform} = require('stream-transform');
  * 
  */
 
-
-/** A global list of cover record objects, which will eventually be written into csv file.*/
-// const coverRecords = [];
-
 startProcess();
 async function startProcess() {
   const readStream = fs.createReadStream('/Users/cindychen/Documents/NEU/Course_Material/cs5200/Project/second_hand_songs/testData/songsWithArtistName.csv');
@@ -40,7 +54,7 @@ async function startProcess() {
 
   // Transformer: parser reads in all columns. Transformer can help filter out unwanted columns.
   const transformer = parser.pipe(transform(function (data) {
-    console.log(data);
+    // console.log(data);
     return {SongId: data['SongId'], SongName: data['SongName'], ArtistName: data['ArtistName']};  // lacking artistName
   }))
 
@@ -51,23 +65,21 @@ async function startProcess() {
     const url = 'https://secondhandsongs.com/search/performance?';  
 
     for await (const record of transformer) { // Each record is a (original) track info
-      // const covers = await new Promise((resolve, reject) => {
-      //   if (false) reject('Error message');
-      //   else resolve([{CoverName: 'lucky', YoutubeUrl: 'https://wertyujhgfdsweaytuijh'},
-      //                 {CoverName: 'lucky2', YoutubeUrl: 'https://wertyujhgfdsweaytuijh'}]);
-      // });
+
       const songTitle =  record.SongName;//'lucky';
       const artistName = record.ArtistName;//'jason%20mraz';     // TODO: Uncomment, after reading source csv has been added the field: "ArtistName"
       const queryString = 'op_title=contains&' + `title=${songTitle}&` + 
       'op_performer=contains&' +  `performer=${artistName}`; 
       const searchTrackEndpoint = url + queryString;
-
-      const coverList = await collectCoverRecords(searchTrackEndpoint);   // Return a list of cover objects, OR null.
+      logger.info('===== Start collecting cover records for SongId: ' + record.SongId +  ', SongTitle: '+ songTitle + ", ArtistName: " + artistName + " ======");
+      console.log('===== Start collecting cover records for SongId: ' + record.SongId +  ', SongTitle: '+ songTitle + ", ArtistName: " + artistName + " ======");
+      
+      const coverList = await collectCoverRecords(searchTrackEndpoint, songTitle, artistName);   // Return a list of cover objects, OR null.
       // Could be null if :
       // No track found with the query endpoint; OR
       // No cover found for the given track;
       if (coverList === null) {
-        console.log(`No cover found for SongTitle=${songTitle}, ArtistName=${artistName}!!`);
+        // console.log(`!! No cover result for SongTitle=${songTitle}, ArtistName=${artistName}!!`);
         continue;
       }
 
@@ -77,37 +89,14 @@ async function startProcess() {
         record.YoutubeUri = cover.YoutubeUri;
         stringifier.write(record);
       }
-
-      // record.CoverName = cover.CoverName;
-      // record.YoutubeUrl = cover.YoutubeUrl;
-      // stringifier.write(record);
   }
   const writeStream = fs.createWriteStream('/Users/cindychen/Documents/NEU/Course_Material/cs5200/Project/second_hand_songs/testData/result.csv');
 
   stringifier.pipe(writeStream);
   stringifier.end();
+  logger.info('PROCESS END!');
+  console.log('PROCESS END!');
 }
-
-// CoverId INT auto_incremented,
-// CoverName string
-// PerformerName string
-// SongId INT
-// SpotifyTrackUrl (link to Spotify UI/webpage to play the track) string
-// YoutubeUrl  string
-
-
-// // Information to reach API
-// const url = 'https://secondhandsongs.com/search/performance?';
-// // Look for the song 'Lucky', sung by 'Jason Mraz'
-// const songTitle =  'dfgfyujn';//'lucky';
-// const artistName = 'ijvdssry';//'jason%20mraz';
-// const queryString = 'op_title=contains&' + `title=${songTitle}&` + 
-// 'op_performer=contains&' +  `performer=${artistName}`; 
-// const searchTrackEndpoint = url + queryString;
-
-
-
-// collectCoverRecords(searchTrackEndpoint);
 
 
 /**
@@ -115,20 +104,23 @@ async function startProcess() {
  * @param {*} searchTrackEndpoint 
  * @returns 
  */
-async function collectCoverRecords(searchTrackEndpoint) {
+async function collectCoverRecords(searchTrackEndpoint, songTitle, artistName) {
   const coverList = [];
 
   const trackObj = await requestTrackUriFromQueryEndpoint(searchTrackEndpoint);
   const {trackUri, trackTitle} = trackObj;
   if (trackUri === null) {
-    console.log("End Program! No track found with the query endpoint: ", searchTrackEndpoint)
+    logger.info("!! No track found with the query endpoint: ", searchTrackEndpoint);
+    console.log("!! No track found with the query endpoint: ", searchTrackEndpoint);
     return null;
   }
 
   const coverUriList = await requestCoverUriListFromTrackUrl(trackUri);
   if (coverUriList.length === 0) {
-    console.log("End Program! No cover found for the given track: \n"
-    + ` Title: ${trackTitle};  TrackUri: ${trackUri} `);
+    logger.info("!! No cover found for the given track: \n"
+    + ` trackTitle: ${trackTitle};  trackUri: ${trackUri};  originalSongTitle:  ${songTitle};  originalArtistName: ${artistName}`);
+    console.log("!! No cover found for the given track: \n"
+    + ` trackTitle: ${trackTitle};  trackUri: ${trackUri};  originalSongTitle:  ${songTitle};  originalArtistName: ${artistName}`);
     return null;
   }
 
@@ -138,22 +130,6 @@ async function collectCoverRecords(searchTrackEndpoint) {
   }
   return coverList;   // Here, coverList must be non-empty.
 }
-
-
-// Functions to call API
-// async function requestDataWriteToCsv() {
-  
-//   const coverUriSequence = await getCoverUriSequence();
-//   console.log(typeof(coverUriSequence));
-
-//   for (let coverUri of coverUriSequence) {
-//     const youtubeUri = await buildSingleCoverRecord(coverUri);
-//     console.log("**** Youtube Uri:", youtubeUri);
-//     // TODO: write each youtubeUri into CSV. (CSV table/Database Table to be designed(i.e. What columns does the DB table contain? 
-
-//   }
-// }
-
 
 
 /**
@@ -170,7 +146,8 @@ async function requestTrackUriFromQueryEndpoint(searchTrackEndpoint) {
   try {
     const queryResponse = await axios.get(searchTrackEndpoint, {headers: {'Accept': 'application/json'}});
     const queryResponseData = queryResponse.data;
-    console.log("**** Query response Data:", queryResponseData);
+    logger.info("****  Query response Data: ", queryResponseData);
+    console.log("**** Query response Data: ", queryResponseData);
     // TODO: queryResponseData may not have results. (queryResponseData.resultPage may be empty)
     // e.g. **** Query response Data: { totalResults: 0, resultPage: [], skippedResults: 0 }
    
@@ -179,13 +156,16 @@ async function requestTrackUriFromQueryEndpoint(searchTrackEndpoint) {
       trackTitle = (queryResponseData.resultPage)[0].title;
     }
   } catch(err) {
-    console.log(err);
+    console.log("Error when querying for track uri from query endpoint ", searchTrackEndpoint +": "+ err);
   }
   
-  console.log("**** Track uri", trackUri);
-  console.log("**** Track title", trackTitle);
+  logger.info("**** Track uri: "+ trackUri);
+  logger.info("**** Track title: "+ trackTitle);
+  console.log("**** Track uri: " + trackUri);
+  console.log("**** Track title: " + trackTitle);
   return {trackUri, trackTitle};
 }
+
 
 /** Return a list of the target track's cover uri's.  
  * 
@@ -205,15 +185,14 @@ async function requestCoverUriListFromTrackUrl(trackUri) {
       coverUriList = trackResponseData.covers.map(coverObj => coverObj.uri);
     }
   } catch(err) {
-    console.log(err);
+    console.log("Error when querying for cover uri list from track url: ", trackUri +": "+ err);
   }
 
-  console.log("**** Cover Uri List:", coverUriList);
+  logger.info("**** Cover Uri List: ", coverUriList);
+  console.log("**** Cover Uri List: " + coverUriList);
   return coverUriList;
 }
 
-// {coverName: "", performerName: "", songId: "", spotifyTrackUrl: "", youtubeUrl: ""};
-// Rename: buildSingleCoverRecord
 
 /**
  * Returns a single cover object that contains coverName, performerName, 
@@ -228,13 +207,13 @@ async function buildSingleCoverRecord(coverUri) {
     CoverName: null, 
     PerformerName :null,
     YoutubeUri: null    //TODO: add SpotifyTrackUri
-  }; // CoverName, YoutubeUrl
+  }; 
 
   try {
     const coverResponse = await axios.get(coverUri, {headers: {'Accept': 'application/json'}});
     // console.log("**** Cover response:", coverResponse);
     const coverResponseData = coverResponse.data;
-    console.log("**** Cover response Data:", coverResponseData);
+    logger.info("**** Cover response Data: ", coverResponseData);
 
     cover.CoverName = coverResponseData.title;
     cover.PerformerName = coverResponseData.performer.name;  // TODO: Can coverResponseData.performer be null/empty??
@@ -248,110 +227,15 @@ async function buildSingleCoverRecord(coverUri) {
 
     if (coverResponseData.external_uri.length > 0) {
       cover.YoutubeUri = ((coverResponseData.external_uri)[0]).uri; // TODO: Check if taking [0] element is accurate!!!
-      console.log("########### CHECK! cover.YoutubeUri: ", cover.YoutubeUri);
     }
 
   } catch(err) {
     console.log("Error when querying to ", coverUri +": "+ err);
   }
-  // console.log("**** Check if releases is an array", Array.isArray(coverResponseData.releases)); // true
-  // console.log("**** Check if external_uri is an array", Array.isArray(coverResponseData.external_uri));  // true
-
-  
-  // console.log("**** Youtube Uri:", youtubeUri);
-  // console.log(youtubeUri[0] !== undefined);
-  // console.log("**** Check if youtubeUri is an array", Array.isArray(youtubeUri)); // true
-    // coverName:"",
-    // performerName: "", 
-    // songId: "",    //==> Not here!! 
-    // spotifyTrackUrl: "", 
-    // youtubeUrl: ""
+  console.log("**** Cover Record Successfuly built:" + cover);
   return cover;
 }
 
-
-
-
-
-
-// coverUriList.forEach((coverUri) => getSingleCoverExternalUri(coverUri));
-
-
-
-// axios.get(endpoint, {headers: {'Accept': 'application/json'}})
-//   .then(response => console.log(response.data))
-//   .catch(error => console.log(error));
-
-
-
-
-//Create a new route in express called /getAPIResponse. 
-// This route will make a REST API call and return the response as JSON.
-
-
-// async function getAPIResponseHandler(req, res) {
-//   let result;
-//   try {
-//     result = await api_helper.make_API_call(endpoint);
-//   } catch(error) {
-//     console.log("1st API call:", error);
-//     return;
-//   }
-//   console.log("1st API call succeeded!");
-  
-  
-
-  // res.json(result);
-  // let jsonResult;
-  // try {
-  //   jsonResult = await res.json(result);
-  //   console.log("jsonResult:", jsonResult);
-  // } catch(error) {
-  //   console.log("Jsonfy 1st call's result:", error);
-  //   return;
-  // }
-
-  // const trackUrl = jsonResult.resultPage;
-  // console.log("trackUrl: ", trackUrl);
-  // let trackResult;
-  // try {
-  //   trackResult = await api_helper.make_API_call(trackUrl);
-  // } catch(error) {
-  //   console.log("2nd API call:", error);
-  //   return;
-  // }
-
-  // let jsonTrackResult;
-  // try{
-  //   jsonTrackResult = await res.json(trackResult);
-  // } catch(error) {
-  //   console.log("Jsonfy 2nd call's result:", error);
-  //   return;
-  // }
-
-// }
-
-// app.get('/getAPIResponse', getAPIResponseHandler);
-// app.get('/getAPIResponse', (req, res) => {
-//   // API code will be here
-//   api_helper.make_API_call(endpoint)
-//   .then(response => {
-//     return new Promise((resolve, reject)=>{resolve(res.json(response))});
-    
-//     // const trackUrl = jsonResult.resultPage[0].uri;
-//     // res.send('jsonResult: ',jsonResult);
-//     // return new Promise((resolve,reject) => {
-//     //   resolve(trackData);
-//     // })       
-//   })
-//   .then(response => {
-//     res.send(response);
-//     // console.log(response);
-//   })
-//   .catch(error => {
-//     res.send(error)
-//   })
-// })
 
 
 app.listen(3000, ()=>{console.log('App started on port 3000');});
