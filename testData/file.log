@@ -1,0 +1,1045 @@
+{ timestamp: '2022-03-08 17:35:27',
+  level: 'info',
+  message:
+   '===== Start collecting cover records for SongId: 1, SongTitle: Lucky, ArtistName: Jason Mraz ======',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:30',
+  level: 'info',
+  message: '****  Query response Data: ',
+  metadata:
+   { totalResults: 1,
+     resultPage:
+      [ { entityType: 'performance',
+          uri: 'https://secondhandsongs.com/performance/276733',
+          title: 'Lucky',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/17900+52359',
+             name: 'Jason Mraz feat. Colbie Caillat' },
+          isOriginal: true } ],
+     skippedResults: 0 } }
+{ timestamp: '2022-03-08 17:35:30',
+  level: 'info',
+  message:
+   '**** Track uri: https://secondhandsongs.com/performance/276733',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:30',
+  level: 'info',
+  message: '**** Track title: Lucky',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:30',
+  level: 'info',
+  message: '**** Cover Uri List: ',
+  metadata:
+   { '0': 'https://secondhandsongs.com/performance/287064',
+     '1': 'https://secondhandsongs.com/performance/276734',
+     '2': 'https://secondhandsongs.com/performance/518389',
+     '3': 'https://secondhandsongs.com/performance/521282',
+     '4': 'https://secondhandsongs.com/performance/581292',
+     '5': 'https://secondhandsongs.com/performance/633603',
+     '6': 'https://secondhandsongs.com/performance/644421',
+     '7': 'https://secondhandsongs.com/performance/688172',
+     '8': 'https://secondhandsongs.com/performance/819266',
+     '9': 'https://secondhandsongs.com/performance/833434',
+     '10': 'https://secondhandsongs.com/performance/839566',
+     '11': 'https://secondhandsongs.com/performance/1111346',
+     '12': 'https://secondhandsongs.com/performance/1113727',
+     '13': 'https://secondhandsongs.com/performance/1129485',
+     '14': 'https://secondhandsongs.com/performance/1129499',
+     '15': 'https://secondhandsongs.com/performance/1142278',
+     '16': 'https://secondhandsongs.com/performance/1158664',
+     '17': 'https://secondhandsongs.com/performance/1161390',
+     '18': 'https://secondhandsongs.com/performance/1228885',
+     '19': 'https://secondhandsongs.com/performance/1315692' } }
+{ timestamp: '2022-03-08 17:35:31',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/287064',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/55509',
+        name: 'Glee Cast' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/98992',
+          title: 'Glee the Music - Volume 4',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/55509',
+             name: 'Glee Cast' } },
+        { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/139495',
+          title: 'Glee the Music - The Complete Season Two',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/55509',
+             name: 'Glee Cast' } },
+        { entityType: 'release',
+          entitySubType: 'single',
+          uri: 'https://secondhandsongs.com/release/146946',
+          title: 'Glee Season Two - Lucky',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/55509',
+             name: 'Glee Cast' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/lJK5p7T3OAk' } ] } }
+{ timestamp: '2022-03-08 17:35:32',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/276734',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/70103+72476',
+        name: 'Corey Gray & Savannah Outen' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/92286',
+          title: 'Discovery',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/70103',
+             name: 'Corey Gray' } },
+        { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/148353',
+          title: 'The Covers',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/72476',
+             name: 'Savannah Outen' } },
+        { entityType: 'release',
+          entitySubType: 'single',
+          uri: 'https://secondhandsongs.com/release/172743',
+          title: 'Lucky',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/70103+72476',
+             name: 'Corey Gray - Savannah Outen' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/RL_8YgnJfok' } ] } }
+{ timestamp: '2022-03-08 17:35:32',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/518389',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/74489+104484',
+        name: 'Jason Chen x ArdenCho' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'single',
+          uri: 'https://secondhandsongs.com/release/159165',
+          title: 'Lucky',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/74489+104484',
+             name: 'Jason Chen x ArdenCho' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/lbeY7Y3gI-c' } ] } }
+{ timestamp: '2022-03-08 17:35:33',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/521282',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/28139',
+        name: 'Cris Delanno' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/160017',
+          title: 'Estrella presents Bossa Garden',
+          performer: null },
+        { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/184150',
+          title: 'Now and Forever',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/28139',
+             name: 'Cris Delanno' } },
+        { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/211475',
+          title: 'Colors of Bossa 4',
+          performer: null } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/e8GW_5sZ9UA' } ] } }
+{ timestamp: '2022-03-08 17:35:34',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/581292',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/67311',
+        name: 'The Class Notes' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/176994',
+          title: 'Black Tie Optional',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/67311',
+             name: 'The Class Notes' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/_AvIMekGV-8' } ] } }
+{ timestamp: '2022-03-08 17:35:35',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/633603',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/121665',
+        name: 'Jesse & Ashleigh' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/190650',
+          title: 'The Voice [AU] - The Blind Auditions Collection',
+          performer: null } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:36',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/644421',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/46442+97273',
+        name: 'Sabrina feat. Richard Poon' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/193741',
+          title: 'I Love Acoustic 4',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/46442',
+             name: 'Sabrina [PH]' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:37',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/688172',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/128117',
+        name: 'Piano Tribute Players' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/204213',
+          title: 'Piano Tribute to Colbie Caillat',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/128117',
+             name: 'Piano Tribute Players' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/wCWk1HLgghE' } ] } }
+{ timestamp: '2022-03-08 17:35:37',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/819266',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/146787',
+        name: 'Acoustic Heartstrings' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/237390',
+          title: 'AH Performs Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/146787',
+             name: 'Acoustic Heartstrings' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/CfcdYyuZeZM' } ] } }
+{ timestamp: '2022-03-08 17:35:38',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/833434',
+     title: 'Lucky [Jason Mraz feat. Colbie Caillat]',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/8008',
+        name: 'Vitamin String Quartet' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/241028',
+          title: 'Strung Out Volume 11 - VSQ Performs Modern Rock Hits',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/8008',
+             name: 'Vitamin String Quartet' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/p61OScBMVSY' } ] } }
+{ timestamp: '2022-03-08 17:35:39',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/839566',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/122863',
+        name: 'Midnite String Quartet' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'EP',
+          uri: 'https://secondhandsongs.com/release/242475',
+          title: 'MSQ Performs Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/122863',
+             name: 'Midnite String Quartet' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:40',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1111346',
+     title: 'Lucky [Jason Mraz]',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/71051',
+        name: 'Sweet Little Band' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'single',
+          uri: 'https://secondhandsongs.com/release/307246',
+          title: 'Babies Go Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/71051',
+             name: 'Sweet Little Band' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/wYR2vQYE2O8' } ] } }
+{ timestamp: '2022-03-08 17:35:41',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1113727',
+     title: 'Lucky [Jason Mraz]',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/178865',
+        name: 'Yoga Pop Ups' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/307702',
+          title: 'Yoga to Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/178865',
+             name: 'Yoga Pop Ups' } },
+        { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/308100',
+          title: 'Yogi Translations of Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/178865',
+             name: 'Yoga Pop Ups' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/UDaYxO9ztoA' } ] } }
+{ timestamp: '2022-03-08 17:35:42',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1129485',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/179812',
+        name: 'Guitar Dreamers' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/310633',
+          title: 'Guitar Dreamers Play the Music of Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/179812',
+             name: 'Guitar Dreamers' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/dTS0-B-rbVc' } ] } }
+{ timestamp: '2022-03-08 17:35:43',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1129499',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/130950',
+        name: 'Guitar Tribute Players' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/310088',
+          title: 'Acoustic Tribute to Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/130950',
+             name: 'Guitar Tribute Players' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/Beb9CbnraPY' } ] } }
+{ timestamp: '2022-03-08 17:35:44',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1142278',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/131469',
+        name: 'Twinkle Twinkle Little Rock Star' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/308593',
+          title: 'Lullaby Versions of Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/131469',
+             name: 'Twinkle Twinkle Little Rock Star' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:45',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1158664',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/179996',
+        name: 'Acoustic Sessions' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'EP',
+          uri: 'https://secondhandsongs.com/release/310938',
+          title: 'Acoustic Guitar Tribute to Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/179996',
+             name: 'Acoustic Sessions' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:46',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1161390',
+     title: 'Fly Me to the Moon / Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/182515+182551',
+        name: 'Rick Hale feat. Breea Guttery' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'single',
+          uri: 'https://secondhandsongs.com/release/316453',
+          title: 'Fly Me to the Moon / Lucky',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/182515+182551',
+             name: 'Rick Hale feat. Breea Guttery' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/21817',
+          title: 'Fly Me to the Moon (In Other Words)' },
+        { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/21817',
+          title: 'Fly Me to the Moon (In Other Words)',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/21817',
+             title: 'In Other Words [Concert]',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/13069',
+                name: 'Felicia Sanders' },
+             isOriginal: true } },
+        { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/9Hf1t_BXGfk' } ] } }
+{ timestamp: '2022-03-08 17:35:47',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1228885',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/179651',
+        name: 'Billboard Baby Lullabies' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/332164',
+          title: 'Lullaby Renditions of Jason Mraz',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/179651',
+             name: 'Billboard Baby Lullabies' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri: [] } }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: '**** Cover response Data: ',
+  metadata:
+   { entityType: 'performance',
+     uri: 'https://secondhandsongs.com/performance/1315692',
+     title: 'Lucky',
+     performer:
+      { uri: 'https://secondhandsongs.com/artist/121401+121695',
+        name: 'Randy Rektor & Bailey Pelkman' },
+     isOriginal: false,
+     date: null,
+     releases:
+      [ { entityType: 'release',
+          entitySubType: 'album',
+          uri: 'https://secondhandsongs.com/release/353929',
+          title: 'Acoustic Duets',
+          performer:
+           { uri: 'https://secondhandsongs.com/artist/121401+121695',
+             name: 'Randy Rektor & Bailey Pelkman' } } ],
+     works:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky' } ],
+     originals:
+      [ { entityType: 'work',
+          entitySubType: 'song',
+          uri: 'https://secondhandsongs.com/work/133486',
+          title: 'Lucky',
+          isRootWork: true,
+          original:
+           { entityType: 'performance',
+             uri: 'https://secondhandsongs.com/performance/276733',
+             title: 'Lucky',
+             performer:
+              { uri: 'https://secondhandsongs.com/artist/17900+52359',
+                name: 'Jason Mraz feat. Colbie Caillat' },
+             isOriginal: true } } ],
+     covers: [],
+     derivedWorks: [],
+     sampledBy: [],
+     usesSamplesFrom: [],
+     external_uri:
+      [ { site: 'https://www.youtube.com',
+          uri: 'https://youtu.be/z9SPDoLK50k' } ] } }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message:
+   '===== Start collecting cover records for SongId: 2, SongTitle: Calm Like a Bomb, ArtistName: Rage Against The Machine ======',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: '****  Query response Data: ',
+  metadata: { totalResults: 0, resultPage: [], skippedResults: 0 } }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: '**** Track uri: null',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: '**** Track title: null',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: '!! No track found with the query endpoint: ',
+  metadata: {} }
+{ timestamp: '2022-03-08 17:35:48',
+  level: 'info',
+  message: 'PROCESS END!',
+  metadata: {} }
